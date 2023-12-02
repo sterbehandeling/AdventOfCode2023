@@ -1,8 +1,9 @@
 import scala.io.Source
 
 object day1 extends App {
-  val lines = Source.fromFile("/Users/sven/Documents/AdventOfCode2023/inputs/day1.txt").getLines
-  var sum = 0;
+  val file = Source.fromFile("/Users/sven/Documents/AdventOfCode2023/inputs/day1.txt")
+  val lines = file.getLines
+  var sum = 0
 
   for (line <- lines) {
     val onlyDigits = line.filter(_.isDigit)
@@ -13,10 +14,13 @@ object day1 extends App {
     sum += (first * 10) + last
   }
   println(sum)
+
+  file.close()
 }
 
 object day1p2 extends App {
-  val lines = Source.fromFile("/Users/sven/Documents/AdventOfCode2023/inputs/day1.txt").getLines
+  val file = Source.fromFile("/Users/sven/Documents/AdventOfCode2023/inputs/day1.txt")
+  val lines = file.getLines
   var sum = 0
 
   for (line <- lines) {
@@ -33,12 +37,13 @@ object day1p2 extends App {
       else if (i + 4 < line.length && line(i) == 'e' && line(i + 1) == 'i' && line(i + 2) == 'g' && line(i + 3) == 'h' && line(i + 4) == 't') onlyDigits = onlyDigits :+ '8'
       else if (i + 3 < line.length && line(i) == 'n' && line(i + 1) == 'i' && line(i + 2) == 'n' && line(i + 3) == 'e') onlyDigits = onlyDigits :+ '9'
     }
-//    println(onlyDigits)
+
     val first = onlyDigits.head.asDigit
     val last = onlyDigits.last.asDigit
 
     sum += (first * 10) + last
   }
   println(sum)
+  file.close()
 }
 
